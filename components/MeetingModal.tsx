@@ -61,7 +61,7 @@ const MeetingModal = ({
                 height={13}
               />
             )}{" "}
-            {buttonText || "Schedule Text"}
+            {buttonText || "Proceed"}
           </Button>
         </DialogContent>
       </Dialog>
