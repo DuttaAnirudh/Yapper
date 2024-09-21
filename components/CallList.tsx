@@ -1,14 +1,12 @@
 "use client";
 
 import useGetCalls from "@/hooks/useGetCalls";
-import { CallRecording } from "@stream-io/node-sdk";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import MeetingCard from "./MeetingCard";
-import { Call } from "@stream-io/video-react-sdk";
+import { Call, CallRecording } from "@stream-io/video-react-sdk";
 import Loader from "./Loader";
 import { useToast } from "@/hooks/use-toast";
-import { title } from "process";
 
 const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
@@ -95,8 +93,8 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
                 : "/icons/recordings.svg"
             }
             title={
-              (meeting as Call).state?.custom.description.substring(0, 20) ||
-              (meeting as CallRecording).filename.substring(0, 20) ||
+              (meeting as Call).state?.custom?.description?.substring(0, 20) ||
+              (meeting as CallRecording)?.filename?.substring(0, 20) ||
               "No Description"
             }
             date={
